@@ -83,13 +83,13 @@ public class SimplestExcelParserTest {
 
     private String getPathsSeveralFiles() {
         StringBuilder result = new StringBuilder();
-        result.append(new File("./src/main/resources/excel_parser_test_data1/Kowalski_Jan.xls").getAbsolutePath() + ";");
+        result.append(new File("./src/main/resources/excel_parser_test_data1/Kowalski_Janek.xls").getAbsolutePath() + ";");
         result.append(new File("./src/main/resources/excel_parser_test_data1/Nowak_Piotr.xls").getAbsolutePath() + ";");
         return result.toString();
     }
     private String getPathsSingleFile() {
         StringBuilder result = new StringBuilder();
-        result.append(new File("./src/main/resources/excel_parser_test_data2/Kowalski_Jan.xls").getAbsolutePath() + ";");
+        result.append(new File("./src/main/resources/excel_parser_test_data2/Kowalski_Janek.xls").getAbsolutePath() + ";");
         return result.toString();
     }
 

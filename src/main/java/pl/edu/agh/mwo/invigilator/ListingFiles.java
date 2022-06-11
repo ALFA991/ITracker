@@ -6,36 +6,19 @@ import java.util.List;
 
 public class ListingFiles {
 
-    private void getAllFiles(String path, List<File> fileList) {
-        File[] allFiles = new File(path).listFiles();
+    public static List<File> getAllFiles(File path) {
+        File[] allFiles = path.listFiles();
+        List<File> fileList = new ArrayList<>();
 
         if (allFiles != null) {
             for (File file : allFiles) {
-                if (file.isFile() && file.getName().endsWith(".xlsx")) {
+                if (file.isFile() && file.getName().endsWith(".xls")) {
                     fileList.add(file);
                 } else if (file.isDirectory()) {
-                    getAllFiles(file.getAbsolutePath(), fileList);
+                    fileList.addAll(getAllFiles(file));
                 }
             }
         }
-    }
-
-    public List<File> main(String path, List<File> fileList) {
-        fileList = new ArrayList<>();
-        getAllFiles(path, fileList);
         return fileList;
-    }
-
-    public List<File> getListOfFiles(String path) {
-        File[] mainPath = new File(path).listFiles();
-        List<File> files = new ArrayList<>();
-
-        for (File file : mainPath) {
-            if (file.isFile() && file.getName().endsWith(".xls")) {
-                files.add(file);
-            }
-        }
-
-        return files;
     }
 }

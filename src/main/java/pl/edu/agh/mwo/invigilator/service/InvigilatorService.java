@@ -22,8 +22,9 @@ public class InvigilatorService {
                 List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
 
                 ExcelParser parser = new SimplestExcelParser(listOfFiles);
-                List<Report> reports = parser.getReportsEmployeeProjectHours();
-                String summaryForConsole = ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports);
+                Report report = parser.getReportsEmployeeProjectHours();
+                report.setName(path);
+                String summaryForConsole = report.getSummaryForConsole();
                 System.out.println(summaryForConsole);
                 break;
             }

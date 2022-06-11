@@ -1,40 +1,73 @@
 package pl.edu.agh.mwo.invigilator.report;
 
-import java.util.List;
+import pl.edu.agh.mwo.invigilator.employee.Employee;
+import pl.edu.agh.mwo.invigilator.employee.SimpleEmployee;
+import pl.edu.agh.mwo.invigilator.project.Project;
 
-public class ReportEmployeeProjectHoursSimplest implements Report{
-    private double hours;
-    private String employee;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
-    @Override
-    public void setTotalHours(double totalHours) {
-        hours = totalHours;
+public class ReportEmployeeProjectHoursSimplest implements Report {
+    private String name;
+    private Map<String, Employee> employees = new HashMap<>();
+
+    public ReportEmployeeProjectHoursSimplest(String name) {
+        this.name = name;
     }
 
     @Override
-    public void addEmployeeName(String employeeName) {
-        employee = employeeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
-    public String get() {
-        return employee + " have " + hours + " hours.";
+    public String getName() {
+        return name;
     }
 
-    public static String getSummaryForConsole(List<Report> reports) {
-        StringBuilder result = new StringBuilder();
-        result.append("Report type 1:\n");
-        for (Report report : reports) {
-            result.append(report.get() + "\n");
+    @Override
+    public void setEmployee(String employeeName) {
+        if (!employees.containsKey(employeeName)) {
+            employees.put(employeeName, new SimpleEmployee(employeeName));
         }
-        return result.toString();
+    }
+
+    @Override
+    public void setProject(String employeeName, String projectName, double sumOfHours) {
+        Employee employee = employees.get(employeeName);
+        Project project = employee.getProject(projectName);
+        project.setTotalHours(sumOfHours);
+        employee.setProject(project);
+    }
+
+    @Override
+    public String getSummaryForConsole() {
+        StringBuilder summary = new StringBuilder();
+        summary.append("Report type 1:\n");
+        summary.append("Created in: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss")));
+        summary.append(" by " + System.getProperty("user.name") + "\n");
+        summary.append("Title: " + name + "\n");
+        summary.append("--------------------------------------\n");
+
+        for (Map.Entry<String, Employee> entry : employees.entrySet()) {
+            summary.append(entry.getKey() + " have ");
+            Employee employee = entry.getValue();
+            Map<String, Project> projects = employee.getProjects();
+            double totalHoursForAllProjects = 0;
+            for (String projectName : projects.keySet()) {
+                Project project = projects.get(projectName);
+                totalHoursForAllProjects += project.getTotalHours();
+            }
+            summary.append(totalHoursForAllProjects);
+            summary.append(" hours.\n");
+        }
+        return summary.toString();
     }
 
     @Override
     public String toString() {
-        return "ReportEmployeeProjectHoursSimplest{" +
-                "hours=" + hours +
-                ", employee='" + employee + '\'' +
-                '}';
+        return "<Report 1 simplest: " + name + ">";
     }
 }

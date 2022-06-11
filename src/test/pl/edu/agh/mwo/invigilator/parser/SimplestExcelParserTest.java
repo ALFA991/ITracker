@@ -49,11 +49,12 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        List<Report> reports = parser.getReportsEmployeeProjectHours();
-        System.out.println(reports);
+        Report report = parser.getReportsEmployeeProjectHours();
+        report.setName("Test report 1");
+        System.out.println(report);
 
         //then
-        System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
+        System.out.println(report.getSummaryForConsole());
 
     }
     @Test
@@ -63,10 +64,11 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        List<Report> reports = parser.getReportsEmployeeProjectHours();
+        Report report = parser.getReportsEmployeeProjectHours();
+        report.setName("Test report 2");
 
         //then
-        System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
+        System.out.println(report.getSummaryForConsole());
 
     }
 
@@ -83,13 +85,13 @@ public class SimplestExcelParserTest {
 
     private String getPathsSeveralFiles() {
         StringBuilder result = new StringBuilder();
-        result.append(new File("./src/main/resources/excel_parser_test_data1/Kowalski_Janek.xls").getAbsolutePath() + ";");
+        result.append(new File("./src/main/resources/excel_parser_test_data1/Kowalski_Jan.xls").getAbsolutePath() + ";");
         result.append(new File("./src/main/resources/excel_parser_test_data1/Nowak_Piotr.xls").getAbsolutePath() + ";");
         return result.toString();
     }
     private String getPathsSingleFile() {
         StringBuilder result = new StringBuilder();
-        result.append(new File("./src/main/resources/excel_parser_test_data2/Kowalski_Janek.xls").getAbsolutePath() + ";");
+        result.append(new File("./src/main/resources/excel_parser_test_data2/Kowalski_Jan.xls").getAbsolutePath() + ";");
         return result.toString();
     }
 

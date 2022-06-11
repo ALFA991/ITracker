@@ -7,5 +7,5 @@ import java.util.List;
 public interface ExcelParser {
     String getListOfFiles();
 
-    List<Report> getReportsEmployeeProjectHours();
+    Report getReportsEmployeeProjectHours();
 }

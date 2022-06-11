@@ -1,9 +1,13 @@
 package pl.edu.agh.mwo.invigilator.report;
 
 public interface Report {
-    void addEmployeeName(String employeeName);
+    void setName(String name);
 
-    void setTotalHours(double sumOfHours);
+    String getName();
 
-    public String get();
+    void setEmployee(String employee);
+
+    void setProject(String employeeName, String projectName, double sumOfHours);
+
+    String getSummaryForConsole();
 }

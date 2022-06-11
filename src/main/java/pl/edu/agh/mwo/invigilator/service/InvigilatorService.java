@@ -6,7 +6,7 @@ import pl.edu.agh.mwo.invigilator.model.Commands;
 @NoArgsConstructor
 public class InvigilatorService {
 
-    public void startInvigilation(Commands commandToResolve) {
+    public void startInvigilation(Commands commandToResolve, String path) {
         switch (commandToResolve) {
             case INV1: {
                 System.out.println("Wybrano raport 1. Jest w trakcie implementacji");

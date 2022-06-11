@@ -54,6 +54,20 @@ public class SimplestExcelParserTest {
         System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
 
     }
+    @Test
+    public void shouldGetReport2() {
+        //given
+        List<File> exampleFile = readExampleData(EXAMPLE_FILES);
+        ExcelParser parser = new SimplestExcelParser(exampleFile);
+
+        //when
+        List<Report> reports = parser.getReportsEmployeeProjectHours();
+        System.out.println(reports);
+
+        //then
+        System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
+
+    }
 
     private List<File> readExampleData(String path) {
         File mainFolder = new File(path);

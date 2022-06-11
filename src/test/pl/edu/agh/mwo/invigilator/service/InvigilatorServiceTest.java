@@ -12,10 +12,9 @@ public class InvigilatorServiceTest {
         //given
         InvigilatorService invigilatorService = new InvigilatorService();
         String path = "./src/main/resources/excel_parser_test_data1/";
-        String commandForReport1 = "";
 
         //when
-        invigilatorService.startInvigilation(Commands.INV1);
+        invigilatorService.startInvigilation(Commands.INV1, path);
 
         //then
         //should print:

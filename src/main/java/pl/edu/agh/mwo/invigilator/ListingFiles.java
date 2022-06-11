@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ListingFiles {
 
-    public List<File> getAllFiles(String path, List<File> fileList) {
+    private void getAllFiles(String path, List<File> fileList) {
         File[] allFiles = new File(path).listFiles();
 
         if (allFiles != null) {
@@ -18,11 +18,24 @@ public class ListingFiles {
                 }
             }
         }
+    }
+
+    public List<File> main(String path, List<File> fileList) {
+        fileList = new ArrayList<>();
+        getAllFiles(path, fileList);
         return fileList;
     }
 
-    private void main(String[] args) {
-        List<File> fileList = new ArrayList<>();
-        getAllFiles("", fileList);
+    public List<File> getListOfFiles(String path) {
+        File[] mainPath = new File(path).listFiles();
+        List<File> files = new ArrayList<>();
+
+        for (File file : mainPath) {
+            if (file.isFile() && file.getName().endsWith(".xls")) {
+                files.add(file);
+            }
+        }
+
+        return files;
     }
 }

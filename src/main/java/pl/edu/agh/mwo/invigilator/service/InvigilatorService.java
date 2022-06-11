@@ -20,12 +20,12 @@ public class InvigilatorService {
             case INV1: {
                 //System.out.println("Wybrano raport 1. Jest w trakcie implementacji");
                 ListingFiles listingFiles = new ListingFiles();
-                List<File> exampleFile = new ArrayList<>();
-                listingFiles.getAllFiles("c:/", exampleFile);
+                List<File> listOfFiles = listingFiles.getListOfFiles(path);
 
-                ExcelParser parser = new SimplestExcelParser(exampleFile);
+                ExcelParser parser = new SimplestExcelParser(listOfFiles);
                 List<Report> reports = parser.getReportsEmployeeProjectHours();
-                ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports);
+                String summaryForConsole = ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports);
+                System.out.println(summaryForConsole);
                 break;
             }
             case INV2: {

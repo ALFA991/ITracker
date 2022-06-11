@@ -35,10 +35,11 @@ public class ReportEmployeeProjectHoursSimplest implements Report {
     }
 
     @Override
-    public void setProject(String employeeName, String projectName, double sumOfHours) {
+    public void setProject(String employeeName, String projectName, double totalHours) {
         Employee employee = employees.get(employeeName);
         Project project = employee.getProject(projectName);
-        project.setTotalHours(sumOfHours);
+        double currentTotalHours = project.getTotalHours();
+        project.setTotalHours(currentTotalHours + totalHours);
         employee.setProject(project);
     }
 

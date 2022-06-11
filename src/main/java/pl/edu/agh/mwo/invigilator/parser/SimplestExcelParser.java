@@ -58,15 +58,16 @@ public class SimplestExcelParser implements ExcelParser {
                 String projectName = sheet.getSheetName();
 
                 int rowId = 0;
-                boolean shouldRead = true;
 
-                while (shouldRead) {
+                while (true) {
                     Row row = sheet.getRow(rowId);
                     if (row == null) {
                         break;
                     }
                     Cell cell = row.getCell(ROW_ID_HOURS);
-
+                    if (cell == null) {
+                        break;
+                    }
                     CellType cellType = cell.getCellType();
                     if (cellType.equals(CellType.NUMERIC)) {
                         double value = cell.getNumericCellValue();

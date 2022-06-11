@@ -14,6 +14,7 @@ import java.util.List;
 public class SimplestExcelParserTest {
 
     public static final String EXAMPLE_FILES = "./src/main/resources/excel_parser_test_data1";
+    public static final String EXAMPLE_FILES_SERVARAL_MONTHS = "./src/main/resources/excel_parser_test_data4";
     public static final String EXAMPLE_FILE = "./src/main/resources/excel_parser_test_data2";
 
     @Test
@@ -58,10 +59,10 @@ public class SimplestExcelParserTest {
 
     }
     @Test
-    public void shouldGetReport2() {
+    public void shouldGetReport1ForSeveralEmployees() {
         //given
-        List<File> exampleFile = readExampleData(EXAMPLE_FILES);
-        ExcelParser parser = new SimplestExcelParser(exampleFile);
+        List<File> exampleFiles = readExampleData(EXAMPLE_FILES);
+        ExcelParser parser = new SimplestExcelParser(exampleFiles);
 
         //when
         Report report = parser.getReportsEmployeeProjectHours();
@@ -70,6 +71,31 @@ public class SimplestExcelParserTest {
         //then
         System.out.println(report.getSummaryForConsole());
 
+    }
+
+    @Test
+    public void shouldGetReport1ForSeveralMonths() {
+        //given
+        List<File> exampleFile = getListOfFilesForSeveralMonths1();
+        ExcelParser parser = new SimplestExcelParser(exampleFile);
+
+        //when
+        Report report = parser.getReportsEmployeeProjectHours();
+        report.setName("Test report 3: several months");
+
+        //then
+        System.out.println(report.getSummaryForConsole());
+
+    }
+
+    private List<File> getListOfFilesForSeveralMonths1() {
+        List<File> files = new ArrayList<>();
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/01/Kowalski_Jan.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/01/Nowak_Piotr.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/02/Kowalski_Jan.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/03/Kowalski_Jan.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/03/Nowak_Piotr.xls"));
+        return files;
     }
 
     private List<File> readExampleData(String path) {

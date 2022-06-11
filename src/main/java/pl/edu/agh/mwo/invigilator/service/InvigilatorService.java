@@ -19,8 +19,7 @@ public class InvigilatorService {
         switch (commandToResolve) {
             case INV1: {
                 //System.out.println("Wybrano raport 1. Jest w trakcie implementacji");
-                ListingFiles listingFiles = new ListingFiles();
-                List<File> listOfFiles = listingFiles.getListOfFiles(path);
+                List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
 
                 ExcelParser parser = new SimplestExcelParser(listOfFiles);
                 List<Report> reports = parser.getReportsEmployeeProjectHours();

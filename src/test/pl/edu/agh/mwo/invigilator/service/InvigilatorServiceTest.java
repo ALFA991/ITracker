@@ -22,4 +22,20 @@ public class InvigilatorServiceTest {
         //Kowalski Jan have 46.0 hours.
         //Nowak Piotr have 39.0 hours.
     }
+
+    @Test
+    public void shouldGenerateReportVersion1SubFolders() {
+        //given
+        InvigilatorService invigilatorService = new InvigilatorService();
+        String path = "./src/main/resources/excel_parser_test_data3/";
+
+        //when
+        invigilatorService.startInvigilation(Commands.INV1, path);
+
+        //then
+        //should print:
+        //Kowalski Janek have 46.0 hours.
+        //Kowalski Jan have 46.0 hours.
+        //Nowak Piotr have 39.0 hours.
+    }
 }

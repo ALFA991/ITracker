@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ListingFiles {
 
-    private static void getAllFiles(String path, List<String> fileList) {
+    private void getAllFiles(String path, List<File> fileList) {
         File[] allFiles = new File(path).listFiles();
 
         if (allFiles != null) {
             for (File file : allFiles) {
                 if (file.isFile() && file.getName().endsWith(".xlsx")) {
-                    fileList.add(file.getName());
+                    fileList.add(file);
                 } else if (file.isDirectory()) {
                     getAllFiles(file.getAbsolutePath(), fileList);
                 }
@@ -20,11 +20,22 @@ public class ListingFiles {
         }
     }
 
-    public static void main(String[] args) {
-        List<String> fileList = new ArrayList<>();
+    public List<File> main(String path, List<File> fileList) {
+        fileList = new ArrayList<>();
+        getAllFiles(path, fileList);
+        return fileList;
+    }
 
-        getAllFiles("", fileList);
+    public List<File> getListOfFiles(String path) {
+        File[] mainPath = new File(path).listFiles();
+        List<File> files = new ArrayList<>();
 
-        System.out.println(fileList);
+        for (File file : mainPath) {
+            if (file.isFile() && file.getName().endsWith(".xls")) {
+                files.add(file);
+            }
+        }
+
+        return files;
     }
 }

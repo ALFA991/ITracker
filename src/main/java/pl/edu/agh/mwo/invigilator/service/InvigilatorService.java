@@ -21,7 +21,9 @@ public class InvigilatorService {
                 break;
             }
             case HELP: {
-                System.out.println("Wybrano pomoc. Jest w trakcie implementacji");
+                System.out.println("Aby wybrać raport, który wypisuje osoby i ilość godzin, wpisz: inv1");
+                System.out.println("Aby wybrać raport, który wypisuje projekt i ilość godzin, wpisz: inv2");
+                System.out.println("Aby wybrać raport, który zestawia pracownika, projekt i ilość godzin, wpisz: inv3");
                 break;
             }
         }

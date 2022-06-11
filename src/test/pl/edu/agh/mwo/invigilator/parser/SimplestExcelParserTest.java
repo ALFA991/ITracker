@@ -10,9 +10,10 @@ import java.util.List;
 public class SimplestExcelParserTest {
 
     public static final String EXAMPLE_FILES = "./src/main/resources/excel_parser_test_data1";
+    public static final String EXAMPLE_FILE = "./src/main/resources/excel_parser_test_data2";
 
     @Test
-    public void shouldGetListOfExcelFilesToParse() {
+    public void shouldGetListOfExcelFilesPathsToParse() {
         //given
         List<File> exampleFiles = readExampleData(EXAMPLE_FILES);
         ExcelParser parser = new SimplestExcelParser(exampleFiles);
@@ -21,8 +22,20 @@ public class SimplestExcelParserTest {
         String listOfFiles = parser.getListOfFiles();
 
         //then
-        Assert.assertEquals(getPaths(EXAMPLE_FILES), listOfFiles);
+        Assert.assertEquals(getPathsSeveralFiles(), listOfFiles);
+    }
 
+    @Test
+    public void shouldGetOneExcelFilePathToParse() {
+        //given
+        List<File> exampleFile = readExampleData(EXAMPLE_FILE);
+        ExcelParser parser = new SimplestExcelParser(exampleFile);
+
+        //when
+        String listOfFiles = parser.getListOfFiles();
+
+        //then
+        Assert.assertEquals(getPathsSingleFile(), listOfFiles);
     }
 
     private List<File> readExampleData(String path) {
@@ -31,10 +44,15 @@ public class SimplestExcelParserTest {
         return files;
     }
 
-    private String getPaths(String path) {
+    private String getPathsSeveralFiles() {
         StringBuilder result = new StringBuilder();
         result.append(new File("./src/main/resources/excel_parser_test_data1/Kowalski_Jan.xls").getAbsolutePath() + ";");
         result.append(new File("./src/main/resources/excel_parser_test_data1/Nowak_Piotr.xls").getAbsolutePath() + ";");
+        return result.toString();
+    }
+    private String getPathsSingleFile() {
+        StringBuilder result = new StringBuilder();
+        result.append(new File("./src/main/resources/excel_parser_test_data2/Kowalski_Jan.xls").getAbsolutePath() + ";");
         return result.toString();
     }
 

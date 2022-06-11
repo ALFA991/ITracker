@@ -3,9 +3,11 @@ package pl.edu.agh.mwo.invigilator;
 import pl.edu.agh.mwo.invigilator.service.InvigilatorService;
 import pl.edu.agh.mwo.invigilator.service.Utils;
 
+import java.io.FileNotFoundException;
+
 public class Invigilator {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         InvigilatorService invigilatorService = new InvigilatorService();
         if (args.length > 2 || args.length == 0) {
             throw new IllegalStateException("Bad command");

@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.invigilator.parser;
 
 import org.junit.Assert;
 import org.junit.Test;
+import pl.edu.agh.mwo.invigilator.report.Report;
 
 import java.io.File;
 import java.util.Arrays;
@@ -36,6 +37,20 @@ public class SimplestExcelParserTest {
 
         //then
         Assert.assertEquals(getPathsSingleFile(), listOfFiles);
+    }
+
+    @Test
+    public void shouldGetReport1() {
+        //given
+        List<File> exampleFile = readExampleData(EXAMPLE_FILE);
+        ExcelParser parser = new SimplestExcelParser(exampleFile);
+
+        //when
+        List<Report> reports = parser.getReportsEmployeeProjectHours();
+        System.out.println(reports);
+
+        //then
+
     }
 
     private List<File> readExampleData(String path) {

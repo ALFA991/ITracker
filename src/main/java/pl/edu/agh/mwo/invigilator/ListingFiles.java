@@ -6,25 +6,23 @@ import java.util.List;
 
 public class ListingFiles {
 
-    private static void getAllFiles(String path, List<String> fileList) {
+    public List<File> getAllFiles(String path, List<File> fileList) {
         File[] allFiles = new File(path).listFiles();
 
         if (allFiles != null) {
             for (File file : allFiles) {
                 if (file.isFile() && file.getName().endsWith(".xlsx")) {
-                    fileList.add(file.getName());
+                    fileList.add(file);
                 } else if (file.isDirectory()) {
                     getAllFiles(file.getAbsolutePath(), fileList);
                 }
             }
         }
+        return fileList;
     }
 
-    public static void main(String[] args) {
-        List<String> fileList = new ArrayList<>();
-
+    private void main(String[] args) {
+        List<File> fileList = new ArrayList<>();
         getAllFiles("", fileList);
-
-        System.out.println(fileList);
     }
 }

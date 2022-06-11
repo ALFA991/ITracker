@@ -6,6 +6,8 @@ import pl.edu.agh.mwo.invigilator.report.Report;
 import pl.edu.agh.mwo.invigilator.report.ReportEmployeeProjectHoursSimplest;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,7 +64,6 @@ public class SimplestExcelParserTest {
 
         //when
         List<Report> reports = parser.getReportsEmployeeProjectHours();
-        System.out.println(reports);
 
         //then
         System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
@@ -71,7 +72,12 @@ public class SimplestExcelParserTest {
 
     private List<File> readExampleData(String path) {
         File mainFolder = new File(path);
-        List<File> files = Arrays.stream(mainFolder.listFiles()).toList();
+        File[] files1 = mainFolder.listFiles();
+
+        List<File> files = new ArrayList<>();
+        for (File file : files1) {
+            files.add(file);
+        }
         return files;
     }
 

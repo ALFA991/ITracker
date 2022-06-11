@@ -1,9 +1,9 @@
-package pl.edu.agh.mwo.invigilator.parser;
+package pl.edu.agh.mwo.invigilator.model.parser;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import pl.edu.agh.mwo.invigilator.report.Report;
-import pl.edu.agh.mwo.invigilator.report.ReportEmployeeProjectHoursSimplest;
+import pl.edu.agh.mwo.invigilator.model.report.Report;
+import pl.edu.agh.mwo.invigilator.model.report.ReportEmployeeProjectHoursSimplest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,7 +33,7 @@ public class SimplestExcelParser implements ExcelParser {
     }
 
     @Override
-    public Report getReportsEmployeeProjectHours() {
+    public Report getReportOption1EmployeeProjectHours() {
         Report report = new ReportEmployeeProjectHoursSimplest("");
 
         for (File file : files) {

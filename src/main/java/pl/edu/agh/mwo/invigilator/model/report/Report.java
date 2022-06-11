@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.invigilator.report;
+package pl.edu.agh.mwo.invigilator.model.report;
 
 public interface Report {
     void setName(String name);

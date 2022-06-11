@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.invigilator.project;
+package pl.edu.agh.mwo.invigilator.model.project;
 
 public interface Project {
     void setTotalHours(double totalHours);

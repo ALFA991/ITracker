@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.invigilator;
+package pl.edu.agh.mwo.invigilator.model.parser;
 
 import java.io.File;
 import java.util.ArrayList;

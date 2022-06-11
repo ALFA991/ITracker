@@ -1,15 +1,13 @@
 package pl.edu.agh.mwo.invigilator.service;
 
 import lombok.NoArgsConstructor;
-import pl.edu.agh.mwo.invigilator.ListingFiles;
+import pl.edu.agh.mwo.invigilator.model.parser.ListingFiles;
 import pl.edu.agh.mwo.invigilator.model.Commands;
-import pl.edu.agh.mwo.invigilator.parser.ExcelParser;
-import pl.edu.agh.mwo.invigilator.parser.SimplestExcelParser;
-import pl.edu.agh.mwo.invigilator.report.Report;
-import pl.edu.agh.mwo.invigilator.report.ReportEmployeeProjectHoursSimplest;
+import pl.edu.agh.mwo.invigilator.model.parser.ExcelParser;
+import pl.edu.agh.mwo.invigilator.model.parser.SimplestExcelParser;
+import pl.edu.agh.mwo.invigilator.model.report.Report;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -22,7 +20,7 @@ public class InvigilatorService {
                 List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
 
                 ExcelParser parser = new SimplestExcelParser(listOfFiles);
-                Report report = parser.getReportsEmployeeProjectHours();
+                Report report = parser.getReportOption1EmployeeProjectHours();
                 report.setName(path);
                 String summaryForConsole = report.getSummaryForConsole();
                 System.out.println(summaryForConsole);

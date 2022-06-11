@@ -2,13 +2,12 @@ package pl.edu.agh.mwo.invigilator.parser;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pl.edu.agh.mwo.invigilator.report.Report;
-import pl.edu.agh.mwo.invigilator.report.ReportEmployeeProjectHoursSimplest;
+import pl.edu.agh.mwo.invigilator.model.parser.ExcelParser;
+import pl.edu.agh.mwo.invigilator.model.parser.SimplestExcelParser;
+import pl.edu.agh.mwo.invigilator.model.report.Report;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SimplestExcelParserTest {
@@ -50,7 +49,7 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        Report report = parser.getReportsEmployeeProjectHours();
+        Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 1");
         System.out.println(report);
 
@@ -65,7 +64,7 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFiles);
 
         //when
-        Report report = parser.getReportsEmployeeProjectHours();
+        Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 2");
 
         //then
@@ -80,7 +79,7 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        Report report = parser.getReportsEmployeeProjectHours();
+        Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 3: several months");
 
         //then

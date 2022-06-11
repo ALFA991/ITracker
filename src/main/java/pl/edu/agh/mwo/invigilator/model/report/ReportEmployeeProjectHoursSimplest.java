@@ -1,8 +1,8 @@
-package pl.edu.agh.mwo.invigilator.report;
+package pl.edu.agh.mwo.invigilator.model.report;
 
-import pl.edu.agh.mwo.invigilator.employee.Employee;
-import pl.edu.agh.mwo.invigilator.employee.SimpleEmployee;
-import pl.edu.agh.mwo.invigilator.project.Project;
+import pl.edu.agh.mwo.invigilator.model.employee.Employee;
+import pl.edu.agh.mwo.invigilator.model.employee.SimpleEmployee;
+import pl.edu.agh.mwo.invigilator.model.project.Project;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

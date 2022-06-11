@@ -1,7 +1,7 @@
-package pl.edu.agh.mwo.invigilator.employee;
+package pl.edu.agh.mwo.invigilator.model.employee;
 
-import pl.edu.agh.mwo.invigilator.project.Project;
-import pl.edu.agh.mwo.invigilator.project.SimpleProject;
+import pl.edu.agh.mwo.invigilator.model.project.Project;
+import pl.edu.agh.mwo.invigilator.model.project.SimpleProject;
 
 import java.util.HashMap;
 import java.util.Map;

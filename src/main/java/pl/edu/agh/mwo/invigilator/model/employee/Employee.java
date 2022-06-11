@@ -1,6 +1,6 @@
-package pl.edu.agh.mwo.invigilator.employee;
+package pl.edu.agh.mwo.invigilator.model.employee;
 
-import pl.edu.agh.mwo.invigilator.project.Project;
+import pl.edu.agh.mwo.invigilator.model.project.Project;
 
 import java.util.Map;
 

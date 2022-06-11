@@ -3,6 +3,7 @@ package pl.edu.agh.mwo.invigilator.parser;
 import org.junit.Assert;
 import org.junit.Test;
 import pl.edu.agh.mwo.invigilator.report.Report;
+import pl.edu.agh.mwo.invigilator.report.ReportEmployeeProjectHoursSimplest;
 
 import java.io.File;
 import java.util.Arrays;
@@ -50,6 +51,7 @@ public class SimplestExcelParserTest {
         System.out.println(reports);
 
         //then
+        System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
 
     }
 

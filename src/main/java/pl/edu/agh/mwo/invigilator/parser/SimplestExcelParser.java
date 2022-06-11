@@ -40,6 +40,8 @@ public class SimplestExcelParser implements ExcelParser {
         for (File file : files) {
             Report report = new ReportEmployeeProjectHoursSimplest();
             String userName = file.getName();
+            userName = userName.replaceAll(".xls", "");
+            userName = userName.replaceAll("_", " ");
             report.addEmployeeName(userName);
 
             Workbook workbook;

@@ -33,7 +33,7 @@ public interface Utils {
                 return false;
             } else if (to.isBlank() && !from.isBlank()) {
                 return !((recordDate.getMonth() + 1) == Integer.parseInt(from));
-            } else if (recordDate.getMonth() <= Integer.parseInt(to) && recordDate.getMonth() >= Integer.parseInt(from)) {
+            } else if (!(recordDate.getMonth() <= Integer.parseInt(to) && recordDate.getMonth() >= Integer.parseInt(from))) {
                 return false;
             }
         }

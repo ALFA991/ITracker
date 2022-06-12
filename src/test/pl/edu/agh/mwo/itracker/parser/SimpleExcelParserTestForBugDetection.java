@@ -79,7 +79,7 @@ public class SimpleExcelParserTestForBugDetection {
 		System.out.println(summaryForConsole);
 
 		//then
-		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug4 date missing have 9.0 hours."));
+		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug4 date missing have 5.0 hours."));
 	}
 
 	//	@Test

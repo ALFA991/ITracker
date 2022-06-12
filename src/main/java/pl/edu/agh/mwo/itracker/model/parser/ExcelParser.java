@@ -5,5 +5,5 @@ import pl.edu.agh.mwo.itracker.model.report.Report;
 public interface ExcelParser {
     String getListOfFiles();
 
-    Report getReportOption1EmployeeProjectHours();
+    Report getReportOption1EmployeeProjectHours(String from, String to);
 }

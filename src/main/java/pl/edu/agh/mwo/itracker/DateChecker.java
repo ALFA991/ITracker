@@ -1,11 +1,20 @@
-package pl.edu.agh.mwo.invigilator;
+package pl.edu.agh.mwo.itracker;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 
-class DateChecker {
+public class DateChecker {
+
+//    String date = "01/01/2020";
+//    String regex = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-](\\d{4})$";
+//    DateChecker dc = new DateChecker(regex);
+//		System.out.println(dc.check(date));
 
     private static final int LEAP_STEP = 4;
     private Matcher matcher;
@@ -44,7 +53,7 @@ class DateChecker {
                 case 6:
                 case 9:
                 case 11: return day < 31;
-                case 2: 
+                case 2:
                     int modulo100 = year % 100;
                     //http://science.howstuffworks.com/science-vs-myth/everyday-myths/question50.htm
                     if ((modulo100 == 0 && year % 400 == 0) || (modulo100 != 0 && year % LEAP_STEP == 0)) {
@@ -59,6 +68,39 @@ class DateChecker {
             }
         }
         return false;
+    }
+
+    public boolean check(final Date date)  {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateStart = null;
+
+        try {
+            dateStart = sdf.parse("01/01/2010");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Date dateNow = new Date();
+
+        if (date.after(dateStart) && date.before(dateNow)) {
+            return true;
+        }
+        return false;
+    }
+
+    private Date StringToDate(String s){
+
+        Date result = null;
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            result  = dateFormat.parse(s);
+        }
+
+        catch(ParseException e){
+            e.printStackTrace();
+
+        }
+        return result ;
     }
 
     public String getRegex() {

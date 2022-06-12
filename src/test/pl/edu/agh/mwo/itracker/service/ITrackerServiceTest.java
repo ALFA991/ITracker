@@ -62,4 +62,23 @@ public class ITrackerServiceTest {
         //Nowak Piotr have 45.0 hours.
         //Kowalski Jan have 95.0 hours.
     }
+
+    @Test
+    public void shouldGenerateReportVersion2ForSeveralMonths() {
+        //given
+        ITrackerService iTrackerService = new ITrackerService();
+        String path = "./src/main/resources/excel_parser_test_data4/";
+
+        //when
+        iTrackerService.startTracking(Commands.RAP2, path);
+
+        //then
+        //should print:
+        //Report type 2:  (project/hours)
+        //Created in: 2022-06-12 11:50:42 by micha
+        //Title: ./src/main/resources/excel_parser_test_data4/
+        //--------------------------------------
+        //Projekt2 have 79.0 hours.
+        //Projekt1 have 61.0 hours.
+    }
 }

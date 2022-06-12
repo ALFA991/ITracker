@@ -5,6 +5,7 @@ import org.junit.Test;
 import pl.edu.agh.mwo.itracker.model.parser.ExcelParser;
 import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParser;
 import pl.edu.agh.mwo.itracker.model.report.Report;
+import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -64,4 +65,56 @@ public class SimpleExcelParserTestForBugDetection {
 		Assert.assertTrue(summaryForConsole.contains("Kowalski Jan bug3 hr string format have 15.0 hours."));
 
 	}
+	@Test
+	public void shouldGoDateMissing() {
+		//given
+
+		List<File> files = new ArrayList<>();
+		files.add(new File("./src/main/resources/excel_parser_test_data5_errors/Nowak_Piot_bug4_date_missing.xls"));
+		ExcelParser parser = new SimplestExcelParser(files);
+
+		//when
+		Report reportType4 = parser.getReportOption1EmployeeProjectHours("", "");
+		String summaryForConsole = reportType4.getSummaryForConsole();
+		System.out.println(summaryForConsole);
+
+		//then
+		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug4 date missing have 9.0 hours."));
+	}
+
+	//	@Test
+//	public void shouldGoDateWrongFormat() {
+//		//given
+//
+//		List<File> files = new ArrayList<>();
+//		files.add(new File("./src/main/resources/excel_parser_test_data5_errors/Nowak_Piot_bug5_date_format.xls"));
+//		ExcelParser parser = new SimplestExcelParser(files);
+//
+//		//when
+//		Report reportType5 = parser.getReportOption1EmployeeProjectHours();
+//		String summaryForConsole = reportType5.getSummaryForConsole();
+//		System.out.println(summaryForConsole);
+//
+//		//then
+//		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug5 date format have 9.0 hours"));
+//	}
+	@Test
+	public void shouldGoDateMonthFuture() {
+		//given
+
+		List<File> files = new ArrayList<>();
+		files.add(new File("./src/main/resources/excel_parser_test_data5_errors/Nowak_Piot_bug6_date_futuremonth.xls"));
+		ExcelParser parser = new SimplestExcelParser(files);
+		String from = "1";
+		String to = "";
+		//when
+		Report reportType6 = parser.getReportOption1EmployeeProjectHours(from, to);
+		String summaryForConsole = reportType6.getSummaryForConsole();
+		System.out.println(summaryForConsole);
+
+		//then
+		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug6 date futuremonth have 5.0 hours."));
+	}
+
+
 }

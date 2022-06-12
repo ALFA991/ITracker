@@ -34,31 +34,31 @@ public class ObslugaBledow {
 
 
 //TIME SPENT
-		var timeCheck = Employee.getTimeSpent();
-		if(!timeCheck.getClass()==Integer.class){
-			System.out.println("number format to be applied for time spent");
-		}
+//		var timeCheck = Employee.getTimeSpent();
+//		if(!timeCheck.getClass()==Integer.class){
+//			System.out.println("number format to be applied for time spent");
+//		}
 
 //TIME SPENT PER EMPLOYEE - once report is generated
-		public boolean checkTotHrsPerDay(Employee employee){
-
-		return StreamOf(Employees).collect(Collectors.groupingBy(Employee::employee), Collectors.groupingBy(Employee::getDate), Collectors.summarizingInt(Employee::getTimeSpent))>=8;
-		}
+//		public boolean checkTotHrsPerDay(Employee employee){
+//
+//		return StreamOf(Employees).collect(Collectors.groupingBy(Employee::employee), Collectors.groupingBy(Employee::getDate), Collectors.summarizingInt(Employee::getTimeSpent))>=8;
+//		}
 
 
 //TYPE of tasks
-		public boolean checkTaskInList(){
-			List<String> taskList = List.of(new String[]{"Spotkanie", "Analiza"});
-
-			for (int i = 0; i < employees.length(); i++) {
-				for (int j = 0; j < employees.getTaskList.length(); j++) {
-					if (taskList.contains(employees.getTaskList[j])) {
-						return true;
-					}
-				}return false;
-			}
-			return false;
-		}
-
+//		public boolean checkTaskInList(){
+//			List<String> taskList = List.of(new String[]{"Spotkanie", "Analiza"});
+//
+//			for (int i = 0; i < employees.length(); i++) {
+//				for (int j = 0; j < employees.getTaskList.length(); j++) {
+//					if (taskList.contains(employees.getTaskList[j])) {
+//						return true;
+//					}
+//				}return false;
+//			}
+//			return false;
+//		}
+		return true;
 	}
 }

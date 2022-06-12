@@ -5,10 +5,16 @@ import java.util.List;
 public class ReportEmployeeProjectHoursSimplest implements Report{
     private double hours;
     private String employee;
+    private String date;
 
     @Override
     public void setTotalHours(double totalHours) {
         hours = totalHours;
+    }
+
+    @Override
+    public void addDate(String date) {
+        date=date;
     }
 
     @Override

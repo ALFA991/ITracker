@@ -5,5 +5,7 @@ public interface Report {
 
     void setTotalHours(double sumOfHours);
 
+    void addDate(String date);
+
     public String get();
 }

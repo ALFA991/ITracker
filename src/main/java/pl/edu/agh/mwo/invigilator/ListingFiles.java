@@ -24,7 +24,7 @@ public class ListingFiles {
         List<String> fileList = new ArrayList<>();
 
         getAllFiles("", fileList);
-
+        fileList.add("C:\\Users\\Basia\\invigilator\\src\\main\\resources\\excel_parser_test_data1\\Kowalski_Jan.xls");
         System.out.println(fileList);
     }
 }

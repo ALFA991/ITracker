@@ -34,9 +34,9 @@ public class ITrackerService {
                 break;
             }
             case HELP: {
-                System.out.println("Aby wybrać raport, który wypisuje osoby i ilość godzin, wpisz: inv1");
-                System.out.println("Aby wybrać raport, który wypisuje projekt i ilość godzin, wpisz: inv2");
-                System.out.println("Aby wybrać raport, który zestawia pracownika, projekt i ilość godzin, wpisz: inv3");
+                System.out.println("Raport - osoby i ilość godzin: rap1 [<excel-path>]");
+                System.out.println("Raport - projekt i ilość godzin: rap2 [<excel-path>]");
+                System.out.println("Raport - pracownik, projekt i ilość godzin: rap3 [<excel-path>]");
                 break;
             }
         }

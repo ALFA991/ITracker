@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import static pl.edu.agh.mwo.itracker.service.Utils.checkIfFilterDate;
+
 public class SimplestExcelParserForReport2 implements ExcelParser {
     private final static int ROW_ID_DATE = 0;
     private final static int ROW_ID_TASK = 1;
@@ -69,10 +71,13 @@ public class SimplestExcelParserForReport2 implements ExcelParser {
                     if (cell == null) {
                         break;
                     }
-                    CellType cellType = cell.getCellType();
-                    if (cellType.equals(CellType.NUMERIC)) {
-                        double value = cell.getNumericCellValue();
-                        sumOfHours += value;
+                    Cell dateCell = row.getCell(ROW_ID_DATE);
+                    if (dateCell != null && !checkIfFilterDate(dateCell, from, to)) {
+                        CellType cellType = cell.getCellType();
+                        if (cellType.equals(CellType.NUMERIC)) {
+                            double value = cell.getNumericCellValue();
+                            sumOfHours += value;
+                        }
                     }
                     rowId++;
                 }

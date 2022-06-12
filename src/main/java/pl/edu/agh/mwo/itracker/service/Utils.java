@@ -6,13 +6,13 @@ public interface Utils {
 
     static Commands parseCommandToConstant(String commandFromCommandLine) {
         switch (commandFromCommandLine) {
-            case "inv1": {
+            case "rap1": {
                 return Commands.RAP1;
             }
-            case "inv2": {
+            case "rap2": {
                 return Commands.RAP2;
             }
-            case "inv3": {
+            case "rap3": {
                 return Commands.RAP3;
             }
             case "h": {

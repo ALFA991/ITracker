@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.invigilator;
+package pl.edu.agh.mwo.itracker;
 
 public class EmployeeReport3 {
     public String employeeName;

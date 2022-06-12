@@ -1,6 +1,7 @@
 package pl.edu.agh.mwo.itracker.service;
 
 import lombok.NoArgsConstructor;
+import pl.edu.agh.mwo.itracker.Report3;
 import pl.edu.agh.mwo.itracker.model.parser.ListingFiles;
 import pl.edu.agh.mwo.itracker.model.Commands;
 import pl.edu.agh.mwo.itracker.model.parser.ExcelParser;
@@ -8,12 +9,13 @@ import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParser;
 import pl.edu.agh.mwo.itracker.model.report.Report;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @NoArgsConstructor
 public class ITrackerService {
 
-    public void startTracking(Commands commandToResolve, String path) {
+    public void startTracking(Commands commandToResolve, String path) throws FileNotFoundException {
         switch (commandToResolve) {
             case RAP1: {
                 List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
@@ -31,6 +33,7 @@ public class ITrackerService {
             }
             case RAP3: {
                 System.out.println("Wybrano raport 3. Jest w trakcie implementacji");
+                Report3.executeReport3(path);
                 break;
             }
             case HELP: {

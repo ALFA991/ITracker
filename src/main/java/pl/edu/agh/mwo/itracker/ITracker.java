@@ -3,9 +3,11 @@ package pl.edu.agh.mwo.itracker;
 import pl.edu.agh.mwo.itracker.service.ITrackerService;
 import pl.edu.agh.mwo.itracker.service.Utils;
 
+import java.io.FileNotFoundException;
+
 public class ITracker {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         ITrackerService ITrackerService = new ITrackerService();
         if (args.length > 2 || args.length == 0) {
             throw new IllegalStateException("Bad command");

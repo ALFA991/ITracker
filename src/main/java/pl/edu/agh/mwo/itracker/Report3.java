@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.invigilator;
+package pl.edu.agh.mwo.itracker;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
@@ -13,17 +13,14 @@ public class Report3 {
     static List<EmployeeReport3> EmployeeReport3ObjList = new ArrayList<EmployeeReport3>();
     static EmployeeReport3 record;
 
-    public static void main(String[] args) throws FileNotFoundException {
-        executeReport3("/home/students/s/t/stefania/Documents/Projekt/invigilator/src/main");
+    public static void executeReport3(String path) throws FileNotFoundException {
+        List<String> fileList = new ArrayList<>();
+        getAllFilesRep3(path, fileList);
         System.out.println("Report 3 results: \n");
         for (int i = 0;i < EmployeeReport3ObjList.size();i++){
             record = EmployeeReport3ObjList.get(i);
             System.out.println(record.toString());
         }
-    }
-    public static void executeReport3(String path) throws FileNotFoundException {
-        List<String> fileList = new ArrayList<>();
-        getAllFilesRep3(path, fileList);
 
     }
     private static List<String> getAllFilesRep3(String path, List<String> fileList) throws FileNotFoundException {
@@ -78,6 +75,9 @@ public class Report3 {
                     record.setProjectName(sheetName);
                     employeeMap.put(keyTxt,record);
 
+                }else
+                {
+                    sumOfHours = record.getWorkedHours();
                 }
 
 

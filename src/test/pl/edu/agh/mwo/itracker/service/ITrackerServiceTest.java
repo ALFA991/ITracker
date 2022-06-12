@@ -3,18 +3,16 @@ package pl.edu.agh.mwo.itracker.service;
 import org.junit.Test;
 import pl.edu.agh.mwo.itracker.model.Commands;
 
-import static org.junit.Assert.*;
-
 public class ITrackerServiceTest {
 
     @Test
     public void shouldGenerateReportVersion1() {
         //given
-        InvigilatorService invigilatorService = new InvigilatorService();
+        ITrackerService iTrackerService = new ITrackerService();
         String path = "./src/main/resources/excel_parser_test_data1/";
 
         //when
-        invigilatorService.startInvigilation(Commands.INV1, path);
+        iTrackerService.startTracking(Commands.RAP1, path);
 
         //then
         //should print:
@@ -29,11 +27,11 @@ public class ITrackerServiceTest {
     @Test
     public void shouldGenerateReportVersion1SubFolders() {
         //given
-        InvigilatorService invigilatorService = new InvigilatorService();
+        ITrackerService iTrackerService = new ITrackerService();
         String path = "./src/main/resources/excel_parser_test_data3/";
 
         //when
-        invigilatorService.startInvigilation(Commands.INV1, path);
+        iTrackerService.startTracking(Commands.RAP1, path);
 
         //then
         //should print:
@@ -49,11 +47,11 @@ public class ITrackerServiceTest {
     @Test
     public void shouldGenerateReportVersion1ForSeveralMonths() {
         //given
-        InvigilatorService invigilatorService = new InvigilatorService();
+        ITrackerService iTrackerService = new ITrackerService();
         String path = "./src/main/resources/excel_parser_test_data4/";
 
         //when
-        invigilatorService.startInvigilation(Commands.INV1, path);
+        iTrackerService.startTracking(Commands.RAP1, path);
 
         //then
         //should print:

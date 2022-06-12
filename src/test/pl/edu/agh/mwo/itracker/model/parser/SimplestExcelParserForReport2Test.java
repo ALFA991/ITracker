@@ -52,11 +52,11 @@ public class SimplestExcelParserForReport2Test {
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 2");
-        System.out.println(report);
-
-        //then
         System.out.println(report.getSummaryForConsole());
 
+        //then
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 18.0 hours.\n" +
+                "Projekt1 have 28.0 hours."));
     }
 
 
@@ -87,6 +87,7 @@ public class SimplestExcelParserForReport2Test {
         result.append(new File("./src/main/resources/excel_parser_test_data1/Nowak_Piotr.xls").getAbsolutePath() + ";");
         return result.toString();
     }
+
     private String getPathsSingleFile() {
         StringBuilder result = new StringBuilder();
         result.append(new File("./src/main/resources/excel_parser_test_data2/Kowalski_Jan.xls").getAbsolutePath() + ";");

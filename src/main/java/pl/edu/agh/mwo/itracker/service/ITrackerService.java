@@ -40,7 +40,7 @@ public class ITrackerService {
                 break;
             }
             case RAP3: {
-                Report3.executeReport3(path);
+                Report3.executeReport3(path, from, to);
                 break;
             }
             case HELP: {

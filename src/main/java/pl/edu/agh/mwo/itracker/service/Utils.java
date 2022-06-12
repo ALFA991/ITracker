@@ -19,7 +19,7 @@ public interface Utils {
             case "rap3": {
                 return Commands.RAP3;
             }
-            case "h": {
+            case "-h": {
                 return Commands.HELP;
             }
             default: throw new IllegalStateException("Command not recognized");

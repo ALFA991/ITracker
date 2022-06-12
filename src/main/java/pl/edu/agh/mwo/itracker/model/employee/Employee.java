@@ -1,6 +1,6 @@
-package pl.edu.agh.mwo.invigilator.model.employee;
+package pl.edu.agh.mwo.itracker.model.employee;
 
-import pl.edu.agh.mwo.invigilator.model.project.Project;
+import pl.edu.agh.mwo.itracker.model.project.Project;
 
 import java.util.Map;
 

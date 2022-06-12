@@ -1,6 +1,6 @@
-package pl.edu.agh.mwo.invigilator.service;
+package pl.edu.agh.mwo.itracker.service;
 
-import pl.edu.agh.mwo.invigilator.model.Commands;
+import pl.edu.agh.mwo.itracker.model.Commands;
 
 public interface Utils {
 

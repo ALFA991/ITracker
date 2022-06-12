@@ -1,7 +1,7 @@
-package pl.edu.agh.mwo.invigilator.service;
+package pl.edu.agh.mwo.itracker.service;
 
 import org.junit.Test;
-import pl.edu.agh.mwo.invigilator.model.Commands;
+import pl.edu.agh.mwo.itracker.model.Commands;
 
 import static org.junit.Assert.*;
 

@@ -1,6 +1,6 @@
-package pl.edu.agh.mwo.invigilator.model.parser;
+package pl.edu.agh.mwo.itracker.model.parser;
 
-import pl.edu.agh.mwo.invigilator.model.report.Report;
+import pl.edu.agh.mwo.itracker.model.report.Report;
 
 public interface ExcelParser {
     String getListOfFiles();

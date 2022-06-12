@@ -1,22 +1,21 @@
-package pl.edu.agh.mwo.invigilator.service;
+package pl.edu.agh.mwo.itracker.service;
 
 import lombok.NoArgsConstructor;
-import pl.edu.agh.mwo.invigilator.model.parser.ListingFiles;
-import pl.edu.agh.mwo.invigilator.model.Commands;
-import pl.edu.agh.mwo.invigilator.model.parser.ExcelParser;
-import pl.edu.agh.mwo.invigilator.model.parser.SimplestExcelParser;
-import pl.edu.agh.mwo.invigilator.model.report.Report;
+import pl.edu.agh.mwo.itracker.model.parser.ListingFiles;
+import pl.edu.agh.mwo.itracker.model.Commands;
+import pl.edu.agh.mwo.itracker.model.parser.ExcelParser;
+import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParser;
+import pl.edu.agh.mwo.itracker.model.report.Report;
 
 import java.io.File;
 import java.util.List;
 
 @NoArgsConstructor
-public class InvigilatorService {
+public class ITrackerService {
 
-    public void startInvigilation(Commands commandToResolve, String path) {
+    public void startTracking(Commands commandToResolve, String path) {
         switch (commandToResolve) {
-            case INV1: {
-                //System.out.println("Wybrano raport 1. Jest w trakcie implementacji");
+            case RAP1: {
                 List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
 
                 ExcelParser parser = new SimplestExcelParser(listOfFiles);
@@ -26,11 +25,11 @@ public class InvigilatorService {
                 System.out.println(summaryForConsole);
                 break;
             }
-            case INV2: {
+            case RAP2: {
                 System.out.println("Wybrano raport 2. Jest w trakcie implementacji");
                 break;
             }
-            case INV3: {
+            case RAP3: {
                 System.out.println("Wybrano raport 3. Jest w trakcie implementacji");
                 break;
             }

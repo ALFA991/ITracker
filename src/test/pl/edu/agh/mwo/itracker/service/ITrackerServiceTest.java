@@ -3,10 +3,12 @@ package pl.edu.agh.mwo.itracker.service;
 import org.junit.Test;
 import pl.edu.agh.mwo.itracker.model.Commands;
 
+import java.io.FileNotFoundException;
+
 public class ITrackerServiceTest {
 
     @Test
-    public void shouldGenerateReportVersion1() {
+    public void shouldGenerateReportVersion1() throws FileNotFoundException {
         //given
         ITrackerService iTrackerService = new ITrackerService();
         String path = "./src/main/resources/excel_parser_test_data1/";
@@ -25,7 +27,7 @@ public class ITrackerServiceTest {
     }
 
     @Test
-    public void shouldGenerateReportVersion1SubFolders() {
+    public void shouldGenerateReportVersion1SubFolders() throws FileNotFoundException {
         //given
         ITrackerService iTrackerService = new ITrackerService();
         String path = "./src/main/resources/excel_parser_test_data3/";
@@ -45,7 +47,7 @@ public class ITrackerServiceTest {
     }
 
     @Test
-    public void shouldGenerateReportVersion1ForSeveralMonths() {
+    public void shouldGenerateReportVersion1ForSeveralMonths() throws FileNotFoundException {
         //given
         ITrackerService iTrackerService = new ITrackerService();
         String path = "./src/main/resources/excel_parser_test_data4/";
@@ -64,7 +66,7 @@ public class ITrackerServiceTest {
     }
 
     @Test
-    public void shouldGenerateReportVersion2ForSeveralMonths() {
+    public void shouldGenerateReportVersion2ForSeveralMonths() throws FileNotFoundException {
         //given
         ITrackerService iTrackerService = new ITrackerService();
         String path = "./src/main/resources/excel_parser_test_data4/";

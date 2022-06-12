@@ -3,7 +3,6 @@ package pl.edu.agh.mwo.itracker.model.parser;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import pl.edu.agh.mwo.itracker.model.report.Report;
-import pl.edu.agh.mwo.itracker.model.report.ReportEmployeeProjectHoursSimplest;
 import pl.edu.agh.mwo.itracker.model.report.ReportProjectHoursSimplest;
 
 import java.io.File;
@@ -34,7 +33,7 @@ public class SimplestExcelParserForReport2 implements ExcelParser {
     }
 
     @Override
-    public Report getReportOption1EmployeeProjectHours() {
+    public Report getReportOption1EmployeeProjectHours(String from, String to) {
         //TODO: rename this method to getReport
         Report report = new ReportProjectHoursSimplest("");
 

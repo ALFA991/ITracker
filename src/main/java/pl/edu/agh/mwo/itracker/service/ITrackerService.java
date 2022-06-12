@@ -33,7 +33,7 @@ public class ITrackerService {
                 List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
 
                 ExcelParser parser = new SimplestExcelParserForReport2(listOfFiles);
-                Report report = parser.getReportOption1EmployeeProjectHours(); //TODO: rename this method to getReport
+                Report report = parser.getReportOption1EmployeeProjectHours("", ""); //TODO: rename this method to getReport
                 report.setName(path);
                 String summaryForConsole = report.getSummaryForConsole();
                 System.out.println(summaryForConsole);

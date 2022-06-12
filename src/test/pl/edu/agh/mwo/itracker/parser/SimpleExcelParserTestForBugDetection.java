@@ -20,7 +20,7 @@ public class SimpleExcelParserTestForBugDetection {
 		ExcelParser parser = new SimplestExcelParser(files);
 
 		//when
-		Report reportType1 = parser.getReportOption1EmployeeProjectHours();
+		Report reportType1 = parser.getReportOption1EmployeeProjectHours("", "");
 		String summaryForConsole = reportType1.getSummaryForConsole();
 		System.out.println(summaryForConsole);
 
@@ -38,7 +38,7 @@ public class SimpleExcelParserTestForBugDetection {
 		ExcelParser parser = new SimplestExcelParser(files);
 
 		//when
-		Report reportType2 = parser.getReportOption1EmployeeProjectHours();
+		Report reportType2 = parser.getReportOption1EmployeeProjectHours("", "");
 		String summaryForConsole = reportType2.getSummaryForConsole();
 		System.out.println(summaryForConsole);
 
@@ -56,7 +56,7 @@ public class SimpleExcelParserTestForBugDetection {
 		ExcelParser parser = new SimplestExcelParser(files);
 
 		//when
-		Report reportType3 = parser.getReportOption1EmployeeProjectHours();
+		Report reportType3 = parser.getReportOption1EmployeeProjectHours("", "");
 		String summaryForConsole = reportType3.getSummaryForConsole();
 		System.out.println(summaryForConsole);
 

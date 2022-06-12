@@ -51,10 +51,12 @@ public class SimplestExcelParserTest {
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 1");
-        System.out.println(report);
+//        System.out.println(report);
+        String summaryForConsole = report.getSummaryForConsole();
+        System.out.println(report.getSummaryForConsole());
 
         //then
-        System.out.println(report.getSummaryForConsole());
+        Assert.assertTrue(summaryForConsole.contains("Kowalski Jan have 46.0 hours."));
 
     }
     @Test
@@ -65,11 +67,13 @@ public class SimplestExcelParserTest {
 
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
-        report.setName("Test report 2");
-
-        //then
+//        report.setName("Test report 2");
+        String summaryForConsole = report.getSummaryForConsole();
         System.out.println(report.getSummaryForConsole());
 
+        //then
+        Assert.assertTrue(summaryForConsole.contains("Kowalski Jan have 46.0 hours."));
+        Assert.assertTrue(summaryForConsole.contains("Nowak Piotr have 39.0 hours."));
     }
 
     @Test
@@ -81,9 +85,12 @@ public class SimplestExcelParserTest {
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 3: several months");
+        String summaryForConsole = report.getSummaryForConsole();
+        System.out.println(report.getSummaryForConsole());
 
         //then
-        System.out.println(report.getSummaryForConsole());
+        Assert.assertTrue(summaryForConsole.contains("Kowalski Jan have 95.0 hours."));
+        Assert.assertTrue(summaryForConsole.contains("Nowak Piotr have 45.0 hours."));
 
     }
 

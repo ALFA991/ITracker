@@ -1,26 +1,26 @@
-package pl.edu.agh.mwo.itracker.parser;
+package pl.edu.agh.mwo.itracker.model.parser;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pl.edu.agh.mwo.itracker.model.parser.ExcelParser;
-import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParser;
 import pl.edu.agh.mwo.itracker.model.report.Report;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimplestExcelParserTest {
+import static org.junit.Assert.*;
 
+public class SimplestExcelParserForReport2Test {
     public static final String EXAMPLE_FILES = "./src/main/resources/excel_parser_test_data1";
     public static final String EXAMPLE_FILES_SERVARAL_MONTHS = "./src/main/resources/excel_parser_test_data4";
     public static final String EXAMPLE_FILE = "./src/main/resources/excel_parser_test_data2";
+
 
     @Test
     public void shouldGetListOfExcelFilesPathsToParse() {
         //given
         List<File> exampleFiles = readExampleData(EXAMPLE_FILES);
-        ExcelParser parser = new SimplestExcelParser(exampleFiles);
+        ExcelParser parser = new SimplestExcelParserForReport2(exampleFiles);
 
         //when
         String listOfFiles = parser.getListOfFiles();
@@ -29,11 +29,12 @@ public class SimplestExcelParserTest {
         Assert.assertEquals(getPathsSeveralFiles(), listOfFiles);
     }
 
+
     @Test
     public void shouldGetOneExcelFilePathToParse() {
         //given
         List<File> exampleFile = readExampleData(EXAMPLE_FILE);
-        ExcelParser parser = new SimplestExcelParser(exampleFile);
+        ExcelParser parser = new SimplestExcelParserForReport2(exampleFile);
 
         //when
         String listOfFiles = parser.getListOfFiles();
@@ -43,56 +44,63 @@ public class SimplestExcelParserTest {
     }
 
     @Test
-    public void shouldGetReport1() {
+    public void shouldGetReportProjectHoursForSingleExcelFile() {
         //given
         List<File> exampleFile = readExampleData(EXAMPLE_FILE);
-        ExcelParser parser = new SimplestExcelParser(exampleFile);
+        ExcelParser parser = new SimplestExcelParserForReport2(exampleFile);
 
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
-        report.setName("Test report 1");
-//        System.out.println(report);
+        report.setName("Test report 2");
         String summaryForConsole = report.getSummaryForConsole();
-        System.out.println(report.getSummaryForConsole());
+        System.out.println(summaryForConsole);
 
         //then
-        Assert.assertTrue(summaryForConsole.contains("Kowalski Jan have 46.0 hours."));
-
+        //projekt1 -> 28
+        //projekt2 -> 18
+        Assert.assertTrue(summaryForConsole.contains("Projekt2 have 18.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt1 have 28.0 hours.\n"));
     }
+
     @Test
-    public void shouldGetReport1ForSeveralEmployees() {
+    public void shouldGetReportProjectHoursForSeveralEmployees() {
         //given
         List<File> exampleFiles = readExampleData(EXAMPLE_FILES);
-        ExcelParser parser = new SimplestExcelParser(exampleFiles);
+        ExcelParser parser = new SimplestExcelParserForReport2(exampleFiles);
 
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
-//        report.setName("Test report 2");
+        report.setName("Test report 2");
         String summaryForConsole = report.getSummaryForConsole();
-        System.out.println(report.getSummaryForConsole());
+        System.out.println(summaryForConsole);
 
         //then
-        Assert.assertTrue(summaryForConsole.contains("Kowalski Jan have 46.0 hours."));
-        Assert.assertTrue(summaryForConsole.contains("Nowak Piotr have 39.0 hours."));
+        // projekt2 -> 57
+        // projekt1 -> 28
+        Assert.assertTrue(summaryForConsole.contains("Projekt2 have 57.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt1 have 28.0 hours.\n"));
     }
 
     @Test
-    public void shouldGetReport1ForSeveralMonths() {
+    public void shouldGetReportProjectHoursForSeveralMonths() {
         //given
         List<File> exampleFile = getListOfFilesForSeveralMonths1();
-        ExcelParser parser = new SimplestExcelParser(exampleFile);
+        ExcelParser parser = new SimplestExcelParserForReport2(exampleFile);
 
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 3: several months");
         String summaryForConsole = report.getSummaryForConsole();
-        System.out.println(report.getSummaryForConsole());
+        System.out.println(summaryForConsole);
 
         //then
-        Assert.assertTrue(summaryForConsole.contains("Kowalski Jan have 95.0 hours."));
-        Assert.assertTrue(summaryForConsole.contains("Nowak Piotr have 45.0 hours."));
+        // projekt2 -> 79
+        // projekt1 -> 61
+        Assert.assertTrue(summaryForConsole.contains("Projekt2 have 79.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt1 have 61.0 hours.\n"));
 
     }
+
 
     private List<File> getListOfFilesForSeveralMonths1() {
         List<File> files = new ArrayList<>();
@@ -121,6 +129,7 @@ public class SimplestExcelParserTest {
         result.append(new File("./src/main/resources/excel_parser_test_data1/Nowak_Piotr.xls").getAbsolutePath() + ";");
         return result.toString();
     }
+
     private String getPathsSingleFile() {
         StringBuilder result = new StringBuilder();
         result.append(new File("./src/main/resources/excel_parser_test_data2/Kowalski_Jan.xls").getAbsolutePath() + ";");

@@ -6,6 +6,7 @@ import pl.edu.agh.mwo.itracker.model.parser.ListingFiles;
 import pl.edu.agh.mwo.itracker.model.Commands;
 import pl.edu.agh.mwo.itracker.model.parser.ExcelParser;
 import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParser;
+import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParserForReport2;
 import pl.edu.agh.mwo.itracker.model.report.Report;
 
 import java.io.File;
@@ -28,7 +29,13 @@ public class ITrackerService {
                 break;
             }
             case RAP2: {
-                System.out.println("Wybrano raport 2. Jest w trakcie implementacji");
+                List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
+
+                ExcelParser parser = new SimplestExcelParserForReport2(listOfFiles);
+                Report report = parser.getReportOption1EmployeeProjectHours(); //TODO: rename this method to getReport
+                report.setName(path);
+                String summaryForConsole = report.getSummaryForConsole();
+                System.out.println(summaryForConsole);
                 break;
             }
             case RAP3: {

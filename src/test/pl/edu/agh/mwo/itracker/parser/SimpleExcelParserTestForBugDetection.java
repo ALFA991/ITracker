@@ -74,7 +74,7 @@ public class SimpleExcelParserTestForBugDetection {
 		ExcelParser parser = new SimplestExcelParser(files);
 
 		//when
-		Report reportType4 = parser.getReportOption1EmployeeProjectHours();
+		Report reportType4 = parser.getReportOption1EmployeeProjectHours("", "");
 		String summaryForConsole = reportType4.getSummaryForConsole();
 		System.out.println(summaryForConsole);
 
@@ -99,20 +99,21 @@ public class SimpleExcelParserTestForBugDetection {
 //		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug5 date format have 9.0 hours"));
 //	}
 	@Test
-	public void shouldGoDateFuture() {
+	public void shouldGoDateMonthFuture() {
 		//given
 
 		List<File> files = new ArrayList<>();
-		files.add(new File("./src/main/resources/excel_parser_test_data5_errors/Nowak_Piot_bug6_date_future.xls"));
+		files.add(new File("./src/main/resources/excel_parser_test_data5_errors/Nowak_Piot_bug6_date_futuremonth.xls"));
 		ExcelParser parser = new SimplestExcelParser(files);
-
+		String from = "1";
+		String to = "";
 		//when
-		Report reportType6 = parser.getReportOption1EmployeeProjectHours();
+		Report reportType6 = parser.getReportOption1EmployeeProjectHours(from, to);
 		String summaryForConsole = reportType6.getSummaryForConsole();
 		System.out.println(summaryForConsole);
 
 		//then
-		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug6 date future have 5.0 hours."));
+		Assert.assertTrue(summaryForConsole.contains("Nowak Piot bug6 date futuremonth have 5.0 hours."));
 	}
 
 

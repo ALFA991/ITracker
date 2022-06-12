@@ -52,13 +52,14 @@ public class SimplestExcelParserForReport2Test {
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 2");
-        System.out.println(report.getSummaryForConsole());
+        String summaryForConsole = report.getSummaryForConsole();
+        System.out.println(summaryForConsole);
 
         //then
         //projekt1 -> 28
         //projekt2 -> 18
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 18.0 hours.\n"));
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt1 have 28.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt2 have 18.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt1 have 28.0 hours.\n"));
     }
 
     @Test
@@ -70,13 +71,14 @@ public class SimplestExcelParserForReport2Test {
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 2");
-        System.out.println(report.getSummaryForConsole());
+        String summaryForConsole = report.getSummaryForConsole();
+        System.out.println(summaryForConsole);
 
         //then
         // projekt2 -> 57
         // projekt1 -> 28
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 57.0 hours.\n"));
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt1 have 28.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt2 have 57.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt1 have 28.0 hours.\n"));
     }
 
     @Test
@@ -88,13 +90,14 @@ public class SimplestExcelParserForReport2Test {
         //when
         Report report = parser.getReportOption1EmployeeProjectHours();
         report.setName("Test report 3: several months");
-        System.out.println(report.getSummaryForConsole());
+        String summaryForConsole = report.getSummaryForConsole();
+        System.out.println(summaryForConsole);
 
         //then
         // projekt2 -> 79
         // projekt1 -> 61
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 79.0 hours.\n"));
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt1 have 61.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt2 have 79.0 hours.\n"));
+        Assert.assertTrue(summaryForConsole.contains("Projekt1 have 61.0 hours.\n"));
 
     }
 

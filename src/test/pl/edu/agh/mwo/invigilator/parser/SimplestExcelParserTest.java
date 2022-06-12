@@ -2,16 +2,18 @@ package pl.edu.agh.mwo.invigilator.parser;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pl.edu.agh.mwo.invigilator.report.Report;
-import pl.edu.agh.mwo.invigilator.report.ReportEmployeeProjectHoursSimplest;
+import pl.edu.agh.mwo.invigilator.model.parser.ExcelParser;
+import pl.edu.agh.mwo.invigilator.model.parser.SimplestExcelParser;
+import pl.edu.agh.mwo.invigilator.model.report.Report;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SimplestExcelParserTest {
 
     public static final String EXAMPLE_FILES = "./src/main/resources/excel_parser_test_data1";
+    public static final String EXAMPLE_FILES_SERVARAL_MONTHS = "./src/main/resources/excel_parser_test_data4";
     public static final String EXAMPLE_FILE = "./src/main/resources/excel_parser_test_data2";
 
     @Test
@@ -47,31 +49,62 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        List<Report> reports = parser.getReportsEmployeeProjectHours();
-        System.out.println(reports);
+        Report report = parser.getReportOption1EmployeeProjectHours();
+        report.setName("Test report 1");
+        System.out.println(report);
 
         //then
-        System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
+        System.out.println(report.getSummaryForConsole());
 
     }
     @Test
-    public void shouldGetReport2() {
+    public void shouldGetReport1ForSeveralEmployees() {
         //given
-        List<File> exampleFile = readExampleData(EXAMPLE_FILES);
+        List<File> exampleFiles = readExampleData(EXAMPLE_FILES);
+        ExcelParser parser = new SimplestExcelParser(exampleFiles);
+
+        //when
+        Report report = parser.getReportOption1EmployeeProjectHours();
+        report.setName("Test report 2");
+
+        //then
+        System.out.println(report.getSummaryForConsole());
+
+    }
+
+    @Test
+    public void shouldGetReport1ForSeveralMonths() {
+        //given
+        List<File> exampleFile = getListOfFilesForSeveralMonths1();
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        List<Report> reports = parser.getReportsEmployeeProjectHours();
-        System.out.println(reports);
+        Report report = parser.getReportOption1EmployeeProjectHours();
+        report.setName("Test report 3: several months");
 
         //then
-        System.out.println(ReportEmployeeProjectHoursSimplest.getSummaryForConsole(reports));
+        System.out.println(report.getSummaryForConsole());
 
+    }
+
+    private List<File> getListOfFilesForSeveralMonths1() {
+        List<File> files = new ArrayList<>();
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/01/Kowalski_Jan.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/01/Nowak_Piotr.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/02/Kowalski_Jan.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/03/Kowalski_Jan.xls"));
+        files.add(new File(EXAMPLE_FILES_SERVARAL_MONTHS + "/2012/03/Nowak_Piotr.xls"));
+        return files;
     }
 
     private List<File> readExampleData(String path) {
         File mainFolder = new File(path);
-        List<File> files = Arrays.stream(mainFolder.listFiles()).toList();
+        File[] files1 = mainFolder.listFiles();
+
+        List<File> files = new ArrayList<>();
+        for (File file : files1) {
+            files.add(file);
+        }
         return files;
     }
 

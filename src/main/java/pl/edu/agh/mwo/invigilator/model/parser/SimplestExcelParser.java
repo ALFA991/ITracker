@@ -1,15 +1,14 @@
-package pl.edu.agh.mwo.invigilator.parser;
+package pl.edu.agh.mwo.invigilator.model.parser;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import pl.edu.agh.mwo.invigilator.report.Report;
-import pl.edu.agh.mwo.invigilator.report.ReportEmployeeProjectHoursSimplest;
+import pl.edu.agh.mwo.invigilator.model.report.Report;
+import pl.edu.agh.mwo.invigilator.model.report.ReportEmployeeProjectHoursSimplest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,15 +33,14 @@ public class SimplestExcelParser implements ExcelParser {
     }
 
     @Override
-    public List<Report> getReportsEmployeeProjectHours() {
-        List<Report> reports = new ArrayList<>();
+    public Report getReportOption1EmployeeProjectHours() {
+        Report report = new ReportEmployeeProjectHoursSimplest("");
 
         for (File file : files) {
-            Report report = new ReportEmployeeProjectHoursSimplest();
-            String userName = file.getName();
-            userName = userName.replaceAll(".xls", "");
-            userName = userName.replaceAll("_", " ");
-            report.addEmployeeName(userName);
+            String employeeName = file.getName();
+            employeeName = employeeName.replaceAll(".xls", "");
+            employeeName = employeeName.replaceAll("_", " ");
+            report.setEmployee(employeeName);
 
             Workbook workbook;
             try(FileInputStream fileInputStream = new FileInputStream(file)) {
@@ -53,22 +51,23 @@ public class SimplestExcelParser implements ExcelParser {
                 throw new RuntimeException(e);
             }
 
-            double sumOfHours = 0;
             Iterator<Sheet> sheetIterator = workbook.sheetIterator();
             while (sheetIterator.hasNext()) {
+                double sumOfHours = 0;
                 Sheet sheet = sheetIterator.next();
                 String projectName = sheet.getSheetName();
 
                 int rowId = 0;
-                boolean shouldRead = true;
 
-                while (shouldRead) {
+                while (true) {
                     Row row = sheet.getRow(rowId);
                     if (row == null) {
                         break;
                     }
                     Cell cell = row.getCell(ROW_ID_HOURS);
-
+                    if (cell == null) {
+                        break;
+                    }
                     CellType cellType = cell.getCellType();
                     if (cellType.equals(CellType.NUMERIC)) {
                         double value = cell.getNumericCellValue();
@@ -76,13 +75,10 @@ public class SimplestExcelParser implements ExcelParser {
                     }
                     rowId++;
                 }
+                report.setProject(employeeName, projectName, sumOfHours);
             }
-
-            report.setTotalHours(sumOfHours);
-            reports.add(report);
         }
-
-        return reports;
+        return report;
     }
 
     private boolean isHoursValue(String value) {

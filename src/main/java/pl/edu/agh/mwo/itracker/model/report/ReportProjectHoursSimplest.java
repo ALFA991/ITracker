@@ -43,7 +43,9 @@ public class ReportProjectHoursSimplest implements Report {
         project.setTotalHours(currentTotalHours + totalHours);
         employee.setProject(project);
 
-        projectTotalHours.put(project, currentTotalHours + totalHours);
+        double total = currentTotalHours + totalHours;
+        Double currentTotalHoursForProject = projectTotalHours.getOrDefault(project, 0.0);
+        projectTotalHours.put(project, total + currentTotalHoursForProject);
     }
 
     @Override
@@ -58,7 +60,7 @@ public class ReportProjectHoursSimplest implements Report {
         for (Project project : projectTotalHours.keySet()) {
             summary.append(project.getName());
             summary.append(" have ");
-            summary.append(project.getTotalHours());
+            summary.append(projectTotalHours.get(project));
             summary.append(" hours.\n");
         }
         return summary.toString();

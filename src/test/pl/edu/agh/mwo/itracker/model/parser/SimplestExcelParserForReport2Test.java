@@ -55,7 +55,27 @@ public class SimplestExcelParserForReport2Test {
         System.out.println(report.getSummaryForConsole());
 
         //then
+        //projekt1 -> 28
+        //projekt2 -> 18
         Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 18.0 hours.\n" +
+                "Projekt1 have 28.0 hours."));
+    }
+
+    @Test
+    public void shouldGetReportProjectHoursForSeveralEmployees() {
+        //given
+        List<File> exampleFiles = readExampleData(EXAMPLE_FILES);
+        ExcelParser parser = new SimplestExcelParserForReport2(exampleFiles);
+
+        //when
+        Report report = parser.getReportOption1EmployeeProjectHours();
+        report.setName("Test report 2");
+        System.out.println(report.getSummaryForConsole());
+
+        //then
+        // projekt2 -> 57
+        // projekt1 -> 28
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 57.0 hours.\n" +
                 "Projekt1 have 28.0 hours."));
     }
 

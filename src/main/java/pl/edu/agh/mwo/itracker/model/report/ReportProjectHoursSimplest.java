@@ -43,9 +43,9 @@ public class ReportProjectHoursSimplest implements Report {
         project.setTotalHours(currentTotalHours + totalHours);
         employee.setProject(project);
 
-        double total = currentTotalHours + totalHours;
-        Double currentTotalHoursForProject = projectTotalHours.getOrDefault(project, 0.0);
-        projectTotalHours.put(project, total + currentTotalHoursForProject);
+//        double total = currentTotalHours + totalHours;
+//        Double currentTotalHoursForProject = projectTotalHours.getOrDefault(project, 0.0);
+//        projectTotalHours.put(project, total + currentTotalHoursForProject);
     }
 
     @Override
@@ -57,6 +57,8 @@ public class ReportProjectHoursSimplest implements Report {
         summary.append("Title: " + name + "\n");
         summary.append("--------------------------------------\n");
 
+        setProjectTotalHours();
+
         for (Project project : projectTotalHours.keySet()) {
             summary.append(project.getName());
             summary.append(" have ");
@@ -64,6 +66,20 @@ public class ReportProjectHoursSimplest implements Report {
             summary.append(" hours.\n");
         }
         return summary.toString();
+    }
+
+    private void setProjectTotalHours() {
+        for (String emName : employees.keySet()) {
+            Employee employee = employees.get(emName);
+            Map<String, Project> projects = employee.getProjects();
+            for (String projectName : projects.keySet()) {
+                Project project = projects.get(projectName);
+                double totalHours = project.getTotalHours();
+
+                Double currentTotalHours = projectTotalHours.getOrDefault(project, 0.0);
+                projectTotalHours.put(project, currentTotalHours + totalHours);
+            }
+        }
     }
 
     @Override

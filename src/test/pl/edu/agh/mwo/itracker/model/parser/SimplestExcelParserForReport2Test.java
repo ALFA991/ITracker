@@ -57,8 +57,8 @@ public class SimplestExcelParserForReport2Test {
         //then
         //projekt1 -> 28
         //projekt2 -> 18
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 18.0 hours.\n" +
-                "Projekt1 have 28.0 hours."));
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 18.0 hours.\n"));
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt1 have 28.0 hours.\n"));
     }
 
     @Test
@@ -75,8 +75,27 @@ public class SimplestExcelParserForReport2Test {
         //then
         // projekt2 -> 57
         // projekt1 -> 28
-        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 57.0 hours.\n" +
-                "Projekt1 have 28.0 hours."));
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 57.0 hours.\n"));
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt1 have 28.0 hours.\n"));
+    }
+
+    @Test
+    public void shouldGetReportProjectHoursForSeveralMonths() {
+        //given
+        List<File> exampleFile = getListOfFilesForSeveralMonths1();
+        ExcelParser parser = new SimplestExcelParserForReport2(exampleFile);
+
+        //when
+        Report report = parser.getReportOption1EmployeeProjectHours();
+        report.setName("Test report 3: several months");
+        System.out.println(report.getSummaryForConsole());
+
+        //then
+        // projekt2 -> 79
+        // projekt1 -> 61
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt2 have 79.0 hours.\n"));
+        Assert.assertTrue(report.getSummaryForConsole().contains("Projekt1 have 61.0 hours.\n"));
+
     }
 
 

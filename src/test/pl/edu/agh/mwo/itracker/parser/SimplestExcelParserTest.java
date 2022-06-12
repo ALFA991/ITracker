@@ -49,7 +49,7 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        Report report = parser.getReportOption1EmployeeProjectHours();
+        Report report = parser.getReportOption1EmployeeProjectHours("", "");
         report.setName("Test report 1");
 //        System.out.println(report);
         String summaryForConsole = report.getSummaryForConsole();
@@ -66,9 +66,10 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFiles);
 
         //when
-        Report report = parser.getReportOption1EmployeeProjectHours();
-//        report.setName("Test report 2");
+        Report report = parser.getReportOption1EmployeeProjectHours("", "");
+        report.setName("Test report 2");
         String summaryForConsole = report.getSummaryForConsole();
+        //then
         System.out.println(report.getSummaryForConsole());
 
         //then
@@ -83,7 +84,7 @@ public class SimplestExcelParserTest {
         ExcelParser parser = new SimplestExcelParser(exampleFile);
 
         //when
-        Report report = parser.getReportOption1EmployeeProjectHours();
+        Report report = parser.getReportOption1EmployeeProjectHours("", "");
         report.setName("Test report 3: several months");
         String summaryForConsole = report.getSummaryForConsole();
         System.out.println(report.getSummaryForConsole());

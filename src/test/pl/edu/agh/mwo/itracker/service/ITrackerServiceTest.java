@@ -12,7 +12,7 @@ public class ITrackerServiceTest {
         String path = "./src/main/resources/excel_parser_test_data1/";
 
         //when
-        iTrackerService.startTracking(Commands.RAP1, path);
+        iTrackerService.startTracking(Commands.RAP1, path, "", "");
 
         //then
         //should print:
@@ -31,7 +31,7 @@ public class ITrackerServiceTest {
         String path = "./src/main/resources/excel_parser_test_data3/";
 
         //when
-        iTrackerService.startTracking(Commands.RAP1, path);
+        iTrackerService.startTracking(Commands.RAP1, path, "", "");
 
         //then
         //should print:
@@ -51,7 +51,7 @@ public class ITrackerServiceTest {
         String path = "./src/main/resources/excel_parser_test_data4/";
 
         //when
-        iTrackerService.startTracking(Commands.RAP1, path);
+        iTrackerService.startTracking(Commands.RAP1, path, "", "");
 
         //then
         //should print:
@@ -70,7 +70,7 @@ public class ITrackerServiceTest {
         String path = "./src/main/resources/excel_parser_test_data4/";
 
         //when
-        iTrackerService.startTracking(Commands.RAP2, path);
+        iTrackerService.startTracking(Commands.RAP2, path, "", "");
 
         //then
         //should print:

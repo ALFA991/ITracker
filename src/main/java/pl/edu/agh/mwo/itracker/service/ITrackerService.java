@@ -11,18 +11,19 @@ import pl.edu.agh.mwo.itracker.model.report.Report;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @NoArgsConstructor
 public class ITrackerService {
 
-    public void startTracking(Commands commandToResolve, String path) throws FileNotFoundException {
+    public void startTracking(Commands commandToResolve, String path, String from, String to)  throws FileNotFoundException {
         switch (commandToResolve) {
             case RAP1: {
                 List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
 
                 ExcelParser parser = new SimplestExcelParser(listOfFiles);
-                Report report = parser.getReportOption1EmployeeProjectHours();
+                Report report = parser.getReportOption1EmployeeProjectHours(from, to);
                 report.setName(path);
                 String summaryForConsole = report.getSummaryForConsole();
                 System.out.println(summaryForConsole);

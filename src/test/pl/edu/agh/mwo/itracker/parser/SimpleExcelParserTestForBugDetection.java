@@ -1,10 +1,10 @@
-package pl.edu.agh.mwo.invigilator.parser;
+package pl.edu.agh.mwo.itracker.parser;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pl.edu.agh.mwo.invigilator.model.parser.ExcelParser;
-import pl.edu.agh.mwo.invigilator.model.parser.SimplestExcelParser;
-import pl.edu.agh.mwo.invigilator.model.report.Report;
+import pl.edu.agh.mwo.itracker.model.parser.ExcelParser;
+import pl.edu.agh.mwo.itracker.model.parser.SimplestExcelParser;
+import pl.edu.agh.mwo.itracker.model.report.Report;
 
 import java.io.File;
 import java.util.ArrayList;

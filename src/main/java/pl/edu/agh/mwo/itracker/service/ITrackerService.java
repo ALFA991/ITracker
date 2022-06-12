@@ -13,9 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 public class ITrackerService {
 
-    public void startInvigilation(Commands commandToResolve, String path) {
+    public void startTracking(Commands commandToResolve, String path) {
         switch (commandToResolve) {
-            case INV1: {
+            case RAP1: {
                 List<File> listOfFiles = ListingFiles.getAllFiles(new File(path));
 
                 ExcelParser parser = new SimplestExcelParser(listOfFiles);
@@ -25,11 +25,11 @@ public class ITrackerService {
                 System.out.println(summaryForConsole);
                 break;
             }
-            case INV2: {
+            case RAP2: {
                 System.out.println("Wybrano raport 2. Jest w trakcie implementacji");
                 break;
             }
-            case INV3: {
+            case RAP3: {
                 System.out.println("Wybrano raport 3. Jest w trakcie implementacji");
                 break;
             }

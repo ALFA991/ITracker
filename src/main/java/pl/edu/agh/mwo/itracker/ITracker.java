@@ -10,9 +10,9 @@ public class ITracker {
         if (args.length > 2 || args.length == 0) {
             throw new IllegalStateException("Bad command");
         } else if (args.length > 1) {
-            ITrackerService.startInvigilation(Utils.parseCommandToConstant(args[0]), args[1]);
+            ITrackerService.startTracking(Utils.parseCommandToConstant(args[0]), args[1]);
         } else {
-            ITrackerService.startInvigilation(Utils.parseCommandToConstant(args[0]), "");
+            ITrackerService.startTracking(Utils.parseCommandToConstant(args[0]), "");
         }
     }
 }

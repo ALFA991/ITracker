@@ -5,7 +5,7 @@ import pl.edu.agh.mwo.itracker.model.Commands;
 
 import static org.junit.Assert.*;
 
-public class InvigilatorServiceTest {
+public class ITrackerServiceTest {
 
     @Test
     public void shouldGenerateReportVersion1() {

@@ -45,9 +45,14 @@ public class ITrackerService {
                 break;
             }
             case HELP: {
-                System.out.println("Raport - osoby i ilość godzin: rap1 [<excel-path>]");
-                System.out.println("Raport - projekt i ilość godzin: rap2 [<excel-path>]");
-                System.out.println("Raport - pracownik, projekt i ilość godzin: rap3 [<excel-path>]");
+                System.out.println("Raport - osoby i ilość godzin: rap1 [<excel-path>] [from] [to]");
+                System.out.println("Raport - projekt i ilość godzin: rap2 [<excel-path>] [from] [to]");
+                System.out.println("Raport - pracownik, projekt i ilość godzin: rap3 [<excel-path>] [from] [to]");
+                System.out.println();
+                System.out.println("[from] - filtrowanie po numerze miesiąca - data początkowa");
+                System.out.println("[to] - filtrowanie po numerze miesiąca - data końcowa (nie jest konieczna)");
+                System.out.println();
+                System.out.println("Example: rap1 'C:\\Users\\user\\Desktop' 10 - Raport 'osoby i ilość godzin' z października znajdujący się na podanej ścieżce");
                 break;
             }
         }
